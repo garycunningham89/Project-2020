@@ -1,13 +1,43 @@
-from flask import Flask
+from flask import Flask, url_for, request, redirect, abort, jsonify, session
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_url_path='', 
+            static_folder='staticpages')
+            
+app.secret_key = 'SecretMachineL'
 
-# Create a new web app.
-app = Flask(__name__)
+#index
+@app.route('/')
+def index():
+    #return "hello"
+    count=0
+    count+=1
 
-# Add root route.
-@app.route("/")
-def home():
-    return app.send_static_file('index.html')
+    if not 'counter' in session:
+        session['counter'] =0
+        print("new session")
+
+    sessionCount=session['counter']
+    sessionCount+=1
+    session['counter']=sessionCount
+
+    
+
+    pageContent="<h1>counts</h1>" +\
+        "session Count ="+str(sessionCount) +\
+        "<br/>this Count ="+str(count)
+    
+    return pageContent
+    
+@app.route('/clear')
+def clear():
+    #session.clear()
+    session.pop('counter',None)   
+
+    return "done"
     
 #curl http://127.0.0.1:5000
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run(port=5000)
