@@ -1,14 +1,19 @@
 # Project 2020
-Machine Learning 
-Random numerical app.
+Machine Learning Project 
+
 Linux
 export FLASK_APP=webservice.py
 python3 -m flask run
+
 Windows
 set FLASK_APP=webservice.py
 python -m flask run
-docker build . -t rando-image
-docker run --name rando-container -d -p 5000:5000 rando-image
+
+Docker Commands
+docker build . -t project-2020
+docker run --name project-2020 
+Run Docker
+docker run -d -p 5000:5000 project-2020
 
 REFERENCES:
 
