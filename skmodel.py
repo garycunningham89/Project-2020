@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import sklearn
+
 # Load the dataset in a dataframe object and include only four features as mentioned
 input_file = "powerproduction.csv"
 df = pd.read_csv(input_file, header = 0)
@@ -21,22 +22,14 @@ x = x.reshape(-1, 1)
 
 model = lin.LinearRegression()
 model.fit(x, y)
-i = model.intercept_
-c = model.coef_
-r= model.score(x, y)
+
 p = [model.intercept_, model.coef_[0]]
 def predict(x):
     return f(x,p)
 # Save your model
 from sklearn import model_selection
 import joblib
-joblib.dump(predict, 'model.pkl')
+skl = joblib.dump(predict, 'model.pkl')
 
 # Load the model that you just saved
 skl = joblib.load('model.pkl')
-
-# Saving the data columns from training
-model_columns = list(windspeed)
-joblib.dump(model_columns, 'model_columns.pkl')
-print("model loaded")
-print(skl)

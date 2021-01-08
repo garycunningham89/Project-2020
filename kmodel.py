@@ -23,6 +23,8 @@ scaler = StandardScaler()
 # fitting the 80% Training to the scaler.
 scaler.fit(X_train20)
 f = lambda x: 3.0 * x + 1.0
+def predict(x):
+    return f(x,p)
 X_train = scaler.transform(X_train20)
 X_test = scaler.transform(X_test20)
 Y_train = f(X_train)
@@ -31,7 +33,16 @@ Y_test = f(X_test)
 model = kr.models.Sequential()
 model.add(kr.layers.Dense(1, input_shape=(1,), activation="linear", kernel_initializer='ones', bias_initializer='zeros'))
 model.compile('adam', loss='mean_squared_error')
-
-model.fit(X_train, Y_train, epochs=300)
-model.predict([5.0,10.0,15.0,20.0])
+model.predict(X_test)
 model.evaluate(X_test, Y_test)
+
+
+# Save your model
+from sklearn import model_selection
+import joblib
+joblib.dump(predict, 'keralmodel.pkl')
+
+# Load the model that you just saved
+kl = joblib.load('keralmodel.pkl')
+def keral(x):
+     return kl
