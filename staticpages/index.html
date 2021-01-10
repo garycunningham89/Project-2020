@@ -50,12 +50,12 @@
     <div class="w3-center w3-padding-16" id="create-update">
         <div class="row">
           <div class="col-sm">
-            <button type="submit" onclick = "keras-button()" class="btn btn-success">Perform Keras Linear Regression</button>
+            <button type="submit" id ="keras-button" class="btn btn-success"> Perform Keras Linear Regression</button>
           </div>
     </div>
     <div class="w3-center w3-padding-16" id="create-update">
           <div class="col-sm">
-            <button type="submit" onclick = "sklearn-button()" class="btn btn-primary" id="sklearn-button">Perform SkLearn Linear Regression</button>
+            <button type="submit" id="sklearn-button" class="btn btn-primary">Perform SkLearn Linear Regression</button>
           </div>
         </div>
       </div>
@@ -67,10 +67,10 @@
         {
              $.ajax({
                   type: "POST",
-                  url: "/predictk",
+                  url: "/api/keras",
                   $('#output').val(data.value);
                   success: function(msg){
-                             alert( "Data Saved: " + msg );
+                             alert( "Prediction is: " + msg );
                            }
              });
         }
@@ -79,10 +79,10 @@
         {
              $.ajax({
                   type: "POST",
-                  url: "/predictsk",
+                  url: "/api/sklearn",
                   $('#output').val(data.value);
                   success: function(msg){
-                             alert( "Data Saved: " + msg );
+                             alert( "Prediction is: " + msg );
                            }
              });
         }

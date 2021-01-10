@@ -29,7 +29,7 @@ def predict(x):
 # Save your model
 from sklearn import model_selection
 import joblib
-skl = joblib.dump(predict, 'model.pkl')
+joblib.dump(predict, 'model.pkl')
 
 # Load the model that you just saved
-skl = joblib.load('model.pkl')
+skl = print(joblib.load('model.pkl'))

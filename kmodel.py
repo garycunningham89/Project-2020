@@ -33,9 +33,7 @@ Y_test = f(X_test)
 model = kr.models.Sequential()
 model.add(kr.layers.Dense(1, input_shape=(1,), activation="linear", kernel_initializer='ones', bias_initializer='zeros'))
 model.compile('adam', loss='mean_squared_error')
-model.predict(X_test)
-model.evaluate(X_test, Y_test)
-
+model.predict(X_train)
 
 # Save your model
 from sklearn import model_selection
@@ -43,6 +41,4 @@ import joblib
 joblib.dump(predict, 'keralmodel.pkl')
 
 # Load the model that you just saved
-kl = joblib.load('keralmodel.pkl')
-def keral(x):
-     return kl
+kr = print(joblib.load('keralmodel.pkl'))
