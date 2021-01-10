@@ -1,8 +1,7 @@
 from flask import Flask, request, jsonify
 import traceback
+import json
 
-def skmodel():
-    return skl
 
 app = Flask(__name__,
             static_url_path='', 
@@ -10,22 +9,20 @@ app = Flask(__name__,
             
 app.secret_key = 'SecretMachineL'
 
-
-
 #index
 @app.route('/')
 def home():
     return app.send_static_file('index.html')
-    
-@app.route('/api/keras', methods = ['POST'])
+
+@app.route('/api/keras')
 def keras():
     from kmodel import kr
-    return {"Model Prediction: ": kr}
+    return {"value": kr}
 
-@app.route('/api/sklearn', methods = ['POST'])
+@app.route('/api/sklearn')
 def sklearn():
     from skmodel import skl
-    return {"Model Prediction: ": skl}
+    return {"value": skl}
 
 if __name__ == '__main__':
     app.debug = True

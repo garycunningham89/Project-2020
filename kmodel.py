@@ -35,10 +35,11 @@ model.add(kr.layers.Dense(1, input_shape=(1,), activation="linear", kernel_initi
 model.compile('adam', loss='mean_squared_error')
 model.predict(X_train)
 
-# Save your model
+# Save yourlkl model
 from sklearn import model_selection
 import joblib
 joblib.dump(predict, 'keralmodel.pkl')
 
 # Load the model that you just saved
-kr = print(joblib.load('keralmodel.pkl'))
+k = joblib.load('keralmodel.pkl')
+kr = ("The Keras Model Prediction simulated at ", str(k).strip('<function predict at ').rstrip('>'))

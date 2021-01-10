@@ -30,6 +30,6 @@ def predict(x):
 from sklearn import model_selection
 import joblib
 joblib.dump(predict, 'model.pkl')
-
 # Load the model that you just saved
-skl = print(joblib.load('model.pkl'))
+s = joblib.load('model.pkl')
+skl = ("The Scikit Learn Model Prediction simulated at ", str(s).strip('<function predict at ').rstrip('>'))
